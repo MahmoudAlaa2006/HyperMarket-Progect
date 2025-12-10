@@ -1,12 +1,13 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 public class Promotion {
     private String id;
     private String description;
     private double discountPercentage;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private List<Product> applicableProuducts;
 }

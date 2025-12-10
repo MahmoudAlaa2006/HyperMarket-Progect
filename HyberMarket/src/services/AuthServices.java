@@ -10,8 +10,4 @@ public class AuthServices {
     public void logout(User user){
 
     }
-
-    public boolean changePassword(User user, String newPassword){
-
-    }
 }

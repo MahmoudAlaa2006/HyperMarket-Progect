@@ -1,17 +1,18 @@
 package services;
 
-import models.ActivityLog;
-import models.User;
-
 import java.util.List;
 
 public class UserServices {
-    public void updateUserInfo(User user) {
 
-    } // Update except ID
-
-    public List<ActivityLog> getUserActions(String userId) {
+    public boolean changeUsername(String userID, String newName){
 
     }
 
+    public boolean changeEmail(String userID, String newEmail){
+
+    }
+
+    public boolean changePassword(String userID, String oldPassword, String newPassword){
+
+    }
 }

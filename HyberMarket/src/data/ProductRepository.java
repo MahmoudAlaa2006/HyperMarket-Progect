@@ -1,11 +1,14 @@
 package data;
 
+import models.Product;
+import java.util.List;
+
 public class ProductRepository {
-    public void load(){
+    public List<Product> load(){
 
     }
 
-    public void save(){
+    public void save(List<Product>){
 
     }
 }

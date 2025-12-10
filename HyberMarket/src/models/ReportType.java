@@ -1,5 +1,0 @@
-package models;
-
-public enum ReportType {
-    SALES_REPORT, INVENTORY_REPORT, PROFILE_REPORT, PRODUCT_PERFORMANCE
-}

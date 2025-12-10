@@ -1,11 +1,15 @@
 package data;
 
+import models.Order;
+
+import java.util.List;
+
 public class OrderRepository {
-    public void load(){
+    public List<Order> load(){
 
     }
 
-    public void save(){
+    public void save(List<Order>){
 
     }
 }

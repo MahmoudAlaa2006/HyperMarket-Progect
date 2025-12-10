@@ -1,10 +1,10 @@
 package services;
 
 import models.Product;
-
 import java.util.List;
 
-public class InventoryServices {
+public class InventoryServices extends UserServices {
+
     public void addProduct(Product product){
 
     }
@@ -25,7 +25,7 @@ public class InventoryServices {
 
     }
 
-    public void markAsDamaged(String productId, String reason){
+    public void markAsDamaged(String productId){
 
     }
 
@@ -33,7 +33,7 @@ public class InventoryServices {
 
     }
 
-    public void checkStoockLevels(){
+    public void checkStoockQuantity(){
 
     }
 

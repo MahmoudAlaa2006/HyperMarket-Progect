@@ -3,14 +3,14 @@ package services;
 import models.Promotion;
 import models.Report;
 
-import java.util.Date;
 
-public class MarketingServices {
-    public Report generateSalesReport(Date startDate, Date endDate){
+public class MarketingServices extends UserServices {
+
+    public Report generateSalesReport(String id, String title){
 
     }
 
-    public Report generateInventoryReport(){
+    public Report generateInventoryReport(String id, String title){
 
     }
 

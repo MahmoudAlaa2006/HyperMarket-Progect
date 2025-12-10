@@ -1,11 +1,14 @@
 package data;
 
+import models.User;
+import java.util.List;
+
 public class EmployeeRepository {
-    public void load(){
+    public List<User> load(){
 
     }
 
-    public void save(){
+    public void save(List<User>){
 
     }
 }

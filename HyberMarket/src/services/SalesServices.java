@@ -8,6 +8,7 @@ import models.Seller;
 import java.util.List;
 
 public class SalesServices {
+
     public Order createOrder(Seller seller, List<OrderItem> items) {
 
     }
@@ -20,7 +21,7 @@ public class SalesServices {
 
     }
 
-    public List<Product> getAllProducts() {
+    public List<Product> listAllProducts() {
 
     }
 
