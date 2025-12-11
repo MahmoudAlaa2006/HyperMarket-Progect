@@ -9,6 +9,7 @@ import java.util.Scanner;
 import models.User;
 
 public class UserServices {
+    //-----------------------update user info----------------
     public void updateUserInfo(User user) {
     File f = new File("C:\\Users\\hp\\Desktop\\user services\\user.txt");
     if (!f.exists()) {
@@ -48,7 +49,7 @@ public class UserServices {
         e.printStackTrace();
     }
 }
-
+//---------------------change username----------------
     public boolean changeUsername(String userID, String newName){
         File f = new File("C:\\Users\\hp\\Desktop\\user services\\user.txt");
 
@@ -91,7 +92,7 @@ public class UserServices {
 
     return updated;
     }
-
+//-----------------------------change email------------
     public boolean changeEmail(String userID, String newEmail){
          File f = new File("C:\\Users\\hp\\Desktop\\user services\\user.txt");
 
@@ -133,7 +134,7 @@ public class UserServices {
 
     return updated;
     }
-
+//-------------------change password---------------
     public boolean changePassword(String userID, String oldPassword, String newPassword){
          File f = new File("C:\\Users\\hp\\Desktop\\user services\\user.txt");
 
