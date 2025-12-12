@@ -24,5 +24,4 @@ public class SalesServices {
     public List<Product> listAllProducts() {
 
     }
-
 }

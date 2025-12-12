@@ -6,7 +6,42 @@ public class Notification {
     private String id;
     private NotificationType type;
     private String message;
-    // optional
-    private LocalDateTime createAt;
-    private boolean isRead;
+    private LocalDateTime createdAt;
+
+
+    public Notification(){
+
+    }
+
+    public Notification(String id, NotificationType type, String message){
+        this.id = id;
+        this.type = type;
+        this.message = message;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String newId){
+        id = newId;
+    }
+
+    public NotificationType getType(){
+        return type;
+    }
+
+    public void setType(NotificationType newType){
+        type = newType;
+    }
+
+    public String getMessage(){
+        return message;
+    }
+
+    public void setMessage(String newMessage){
+        message = newMessage;
+    }
 }
+
