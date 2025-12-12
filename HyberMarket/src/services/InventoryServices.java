@@ -33,7 +33,7 @@ public class InventoryServices extends UserServices {
 
     }
 
-    public void checkStoockQuantity(){
+    public void checkStockQuantity(){
 
     }
 

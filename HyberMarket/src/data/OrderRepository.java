@@ -9,7 +9,11 @@ public class OrderRepository {
 
     }
 
-    public void save(List<Order>){
+    public void save(List<Order> orders){
+
+    }
+
+    public Order getOrderById(String id){
 
     }
 }

@@ -3,6 +3,8 @@ package services;
 import models.Promotion;
 import models.Report;
 
+import java.util.List;
+
 
 public class MarketingServices extends UserServices {
 
@@ -19,6 +21,10 @@ public class MarketingServices extends UserServices {
     }
 
     public void sendPromotionToInventory(Promotion promotion){
+
+    }
+
+    public List<Promotion> listAllPromotions(){
 
     }
 }

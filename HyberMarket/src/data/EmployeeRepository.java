@@ -5,6 +5,8 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+
 public class EmployeeRepository {
     private final String FILE_PATH = "employees.txt";
     public List<User> load() {
@@ -54,5 +56,9 @@ public class EmployeeRepository {
         } catch (IOException e) {
             System.out.println("Error saving file: " + e.getMessage());
         }
+    }
+
+    public User getUserById(String id){
+
     }
 }

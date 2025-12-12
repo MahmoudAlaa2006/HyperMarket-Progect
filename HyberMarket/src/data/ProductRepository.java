@@ -8,7 +8,11 @@ public class ProductRepository {
 
     }
 
-    public void save(List<Product>){
+    public void save(List<Product> products){
+
+    }
+
+    public Product getProductById(String id){
 
     }
 }

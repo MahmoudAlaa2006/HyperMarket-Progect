@@ -11,4 +11,86 @@ public class Product {
     private int daysBeforeExpiryWarning;
     private int lowStockThreshold;
     private boolean isDamaged;
+
+
+    public Product(){
+
+    }
+
+    public Product(String id, String name, double price, int quantity, LocalDate expiryDate,
+                   int daysBeforeExpiryWarning, int lowStockThreshold, boolean isDamaged){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.daysBeforeExpiryWarning = daysBeforeExpiryWarning;
+        this.lowStockThreshold = lowStockThreshold;
+        this.isDamaged = isDamaged;
+        this.expiryDate = expiryDate;
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String newId){
+        id = newId;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String newName){
+        name = newName;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double newPrice){
+        price = newPrice;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void setQuantity(int newQuantity){
+        quantity = newQuantity;
+    }
+
+    public LocalDate getExpiryDate(){
+        return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate newDate){
+        expiryDate = newDate;
+    }
+
+    public int getDaysBeforeExpiryWarning(){
+        return daysBeforeExpiryWarning;
+    }
+
+    public void setDaysBeforeExpiryWarning(int newDaysBeforeExpiryWarning){
+        daysBeforeExpiryWarning = newDaysBeforeExpiryWarning;
+    }
+
+    public int getLowStockThreshold(){
+        return lowStockThreshold;
+    }
+
+    public void setLowStockThreshold(int newLowStockThreshold){
+        lowStockThreshold = newLowStockThreshold;
+    }
+
+    public boolean getIsdamaged(){
+        return isDamaged;
+    }
+
+    public void setIsDamaged(boolean newIsDamage){
+        isDamaged = newIsDamage;
+    }
 }
+
