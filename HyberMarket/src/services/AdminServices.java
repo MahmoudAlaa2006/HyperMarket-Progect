@@ -16,7 +16,7 @@ public class AdminServices extends UserServices {
         String id = generateUserId();
         String password = generatePassword();
         User newUser = new User(id, name, email, password, role);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("employees.txt", true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/employees.txt", true))) {
             String line = id + "," + name + "," + email + "," + password + "," + role.toString();
             bw.write(line);
             bw.newLine();
@@ -45,7 +45,7 @@ public class AdminServices extends UserServices {
 
     public List<User> listAllEmployees(){
         List<User> users = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("employees.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/data/employees.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if(line.trim().isEmpty()) continue;
@@ -78,7 +78,7 @@ public class AdminServices extends UserServices {
     }
 
     private void saveEmployees(List<User> users){
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("employees.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/employees.txt"))) {
             for (User u : users) {
                 String line = u.getId() + "," + u.getName() + "," + u.getEmail() + "," + u.getPassword() + "," + u.getRole().toString();
                 bw.write(line);
