@@ -1,0 +1,4 @@
+ADM170000123,Shamy Admin,shamy@company.com,admin123,ADMIN,null
+INV170000124,Mazen Inventory,mazen@company.com,Mazen123,INVENTORY_EMPLOYEE,2025-12-12T13:35:36.592135600
+MRK170000125,Ashraf FaceBook,ashraf@company.com,market123,MARKETING_EMPLOYEE,null
+SAL170000126,AHMED sales,ahmed@company.com,sales123,SALES_EMPLOYEE,2025-12-12T18:13:26.054288200
