@@ -26,8 +26,12 @@ public class Order {
         this.totalPrice = calculatePrice();
     }
 
-    public double calculatePrice(){
-
+    public double calculatePrice() {
+        double sum = 0;
+        for (OrderItem item : items) {
+            sum +=  item.getQuantity() * item.getProduct().getPrice();
+        }
+        return sum;
     }
 
     public String getId(){
