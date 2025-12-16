@@ -20,9 +20,7 @@ public class AdminServices extends UserServices {
     public User addEmployee(String name, String email, UserRole role) {
         String id = generateUserId();
         String password = generatePassword();
-        
-        // Note: User is abstract, so you'll need a concrete implementation
-        // For now, assuming you have a concrete User class or will create one
+
         User newUser = new User(id, name, email, password, role);
         
         List<User> employees = employeeRepository.load();
