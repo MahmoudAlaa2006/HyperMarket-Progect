@@ -1,5 +1,7 @@
 package models;
 
+import utils.IDGenerator;
+
 import java.time.LocalDate;
 
 public class Report {
@@ -12,8 +14,8 @@ public class Report {
 
     }
 
-    public Report(String id, String title, String message){
-        this.id = id;
+    public Report(String title, String message){
+        this.id = IDGenerator.generateReportId();
         this.title = title;
         this.message = message;
     }

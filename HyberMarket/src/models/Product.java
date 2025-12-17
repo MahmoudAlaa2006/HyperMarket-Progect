@@ -1,5 +1,7 @@
 package models;
 
+import utils.IDGenerator;
+
 import java.time.LocalDate;
 
 public class Product {
@@ -15,6 +17,18 @@ public class Product {
 
     public Product(){
 
+    }
+
+    public Product(String name, double price, int quantity, LocalDate expiryDate,
+                   int daysBeforeExpiryWarning, int lowStockThreshold, boolean isDamaged){
+        this.id = IDGenerator.generateProductId();
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.daysBeforeExpiryWarning = daysBeforeExpiryWarning;
+        this.lowStockThreshold = lowStockThreshold;
+        this.isDamaged = isDamaged;
+        this.expiryDate = expiryDate;
     }
 
     public Product(String id, String name, double price, int quantity, LocalDate expiryDate,

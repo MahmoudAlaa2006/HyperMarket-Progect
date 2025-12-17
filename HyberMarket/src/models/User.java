@@ -1,6 +1,9 @@
 package models;
 
 
+import utils.IDGenerator;
+import utils.PasswordGenerator;
+
 public class User {
     private String id;
     private String name;
@@ -9,11 +12,19 @@ public class User {
     private UserRole role;
 
 
-    public User(){
+    public User() {
 
     }
 
-    public User(String id, String name, String email, String password, UserRole role){
+    public User(String name, String email, UserRole role) {
+        this.id = IDGenerator.generateUserId();
+        this.name = name;
+        this.email = email;
+        this.password = PasswordGenerator.generatePassword();
+        this.role = role;
+    }
+
+    public User(String id, String name, String email, String password, UserRole role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -21,40 +32,36 @@ public class User {
         this.role = role;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String newName){
+    public void setName(String newName) {
         name = newName;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String newEmail){
+    public void setEmail(String newEmail) {
         email = newEmail;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String newPassword){
+    public void setPassword(String newPassword) {
         password = newPassword;
     }
 
-    public UserRole getUserRole(){
+    public UserRole getUserRole() {
         return role;
     }
-
-//    public void setUserRole(UserRole newRole){
-//        role = newRole;
-//    }
 }
