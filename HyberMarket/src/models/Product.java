@@ -33,10 +33,6 @@ public class Product {
         return id;
     }
 
-    public void setId(String newId){
-        id = newId;
-    }
-
     public String getName(){
         return name;
     }
@@ -85,7 +81,7 @@ public class Product {
         lowStockThreshold = newLowStockThreshold;
     }
 
-    public boolean getIsdamaged(){
+    public boolean isDamaged(){
         return isDamaged;
     }
 

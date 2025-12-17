@@ -1,30 +1,35 @@
 package services;
 
-import models.Promotion;
-import models.Report;
+import models.*;
+import utils.IDGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
+public class MarketingServices extends BaseServices{
 
-public class MarketingServices extends UserServices {
+    private final List<Promotion> promotions = new ArrayList<>();
+    private final NotificationServices notifications = new NotificationServices();
 
-    public Report generateSalesReport(String id, String title){
+    public void createPromotion(User user, Promotion promotion) {
+        authorize(user, UserRole.MARKETING);
+        promotions.add(promotion);
 
+        notifications.send(new Notification(
+                IDGenerator.generateNotificationId(),
+                NotificationType.PROMOTION_ALERT,
+                "New promotion created"
+        ));
     }
 
-    public Report generateInventoryReport(String id, String title){
-
+    public List<Promotion> listAllPromotions(User user) {
+        authorize(user, UserRole.MARKETING);
+        return promotions;
     }
 
-    public void createPromotion(Promotion promotion){
-
-    }
-
-    public void sendPromotionToInventory(Promotion promotion){
-
-    }
-
-    public List<Promotion> listAllPromotions(){
-
+    public Report generateInventoryReport(User user, String title) {
+        authorize(user, UserRole.MARKETING);
+        return new Report(IDGenerator.generateReportId(), title,
+                "Inventory report generated");
     }
 }

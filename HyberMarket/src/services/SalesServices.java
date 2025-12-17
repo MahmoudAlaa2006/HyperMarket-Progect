@@ -8,53 +8,74 @@ import utils.IDGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalesServices {
+public class SalesServices extends BaseServices{
 
     private final OrderRepository orderRepo = new OrderRepository();
     private final ProductRepository productRepo = new ProductRepository();
+    private final InventoryServices inventoryServices = new InventoryServices();
 
-    // Create and persist a new order
-    public Order createOrder(Seller seller, List<OrderItem> items) {
-        if (seller == null || items == null) return null;
+
+    public Order createOrder(User seller, List<OrderItem> items) {
+        authorize(seller, UserRole.SELLER);
+
+        if (items == null || items.isEmpty()) {
+            throw new IllegalArgumentException("Order must contain at least one item");
+        }
 
         String orderId = IDGenerator.generateOrderId();
-        Order newOrder = new Order(orderId, seller, items, OrderStatus.PENDING);
+        Order newOrder = new Order(orderId, seller, items);
 
-        // Save new order to repository
-        orderRepo.update(newOrder);
+        // Reduce inventory quantities
+        for (OrderItem item : items){
+            inventoryServices.updateQuantitySys(item.getProduct().getId(), -item.getQuantity());
+        }
+
+        List<Order> orders = orderRepo.load();
+        orders.add(newOrder);
+        orderRepo.save(orders);
 
         return newOrder;
     }
 
-    // Cancel an existing order and persist change
-    public void cancelOrder(String orderId) {
-        Order order = orderRepo.getOrderById(orderId);
+    public void cancelOrder(User seller, String orderId) {
+        authorize(seller, UserRole.SELLER);
 
-        if (order == null) return;
+        List<Order> orders = orderRepo.load();
+        for (Order order : orders){
+            if (order.getId().equals(orderId)){
+                if (order.getStatus() == OrderStatus.CANCELLED) {
+                    return;
+                }
 
-        order.setStatus(OrderStatus.CANCELLED);
-        orderRepo.update(order); // persist cancellation
-    }
+                order.setStatus(OrderStatus.CANCELLED);
+                // Return items to inventory
+                for (OrderItem item: order.getItems()){
+                    inventoryServices.updateQuantitySys(item.getProduct().getId(), item.getQuantity());
+                }
 
-    // Search products by keyword
-    public List<Product> searchProducts(String keyword) {
-        List<Product> productsSearch = productRepo.load();
-        List<Product> products = new ArrayList<>();
-
-        String lowerKeyword = keyword.toLowerCase();
-        for (Product product : productsSearch) {
-            String name = product.getName();
-            if (name.equalsIgnoreCase(keyword)
-                    || name.toLowerCase().startsWith(lowerKeyword)
-                    || name.toLowerCase().endsWith(lowerKeyword)) {
-                products.add(product);
+                orderRepo.save(orders);
             }
         }
-
-        return products; // return empty list if no matches
     }
 
-    // List all products
+    public List<Product> searchProducts(String searchTerm) {
+        if (searchTerm == null || searchTerm.isBlank()) {
+            return new ArrayList<>();
+        }
+
+        List<Product> Products = productRepo.load();
+        List<Product> results = new ArrayList<>();
+
+        for (Product product : Products) {
+            if (product.getName().equalsIgnoreCase(searchTerm)
+                    || product.getName().toLowerCase().startsWith(searchTerm.toLowerCase())
+                    || product.getName().toLowerCase().endsWith(searchTerm.toLowerCase())) {
+                results.add(product);
+            }
+        }
+        return results;
+    }
+
     public List<Product> listAllProducts() {
         return productRepo.load();
     }

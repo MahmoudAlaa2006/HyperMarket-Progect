@@ -22,10 +22,6 @@ public class Report {
         return id;
     }
 
-    public void setId(String newId){
-        id = newId;
-    }
-
     public String getTitle(){
         return title;
     }

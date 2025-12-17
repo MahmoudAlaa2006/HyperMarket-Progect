@@ -16,4 +16,8 @@ public class IDGenerator {
     public static String generateReportId() {
         return "REP" + System.currentTimeMillis();
     }
+
+    public static String generateNotificationId() {
+        return "NOT" + System.currentTimeMillis();
+    }
 }

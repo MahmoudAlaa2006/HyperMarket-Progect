@@ -1,7 +1,7 @@
 package models;
 
 
-public abstract class User {
+public class User {
     private String id;
     private String name;
     private String email;
@@ -25,9 +25,6 @@ public abstract class User {
         return id;
     }
 
-    public void setId(String newId){
-        id = newId;
-    }
 
     public String getName(){
         return name;
@@ -57,7 +54,7 @@ public abstract class User {
         return role;
     }
 
-    public void setUserRole(UserRole newRole){
-        role = newRole;
-    }
+//    public void setUserRole(UserRole newRole){
+//        role = newRole;
+//    }
 }

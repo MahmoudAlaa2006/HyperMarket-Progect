@@ -2,20 +2,19 @@ package services;
 
 import models.Notification;
 import models.Product;
-import models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationServices {
-    public void sendLowStockNotification(Product product) {
+    private List<Notification> notifications = new ArrayList<>();
 
+    public void send(Notification notification) {
+        notifications.add(notification);
+        System.out.println("[" + notification.getType() + "]" + notification.getMessage());
     }
 
-    public void sendExpiryNotification(Product product) {
-
-    }
-
-    public List<Notification> getUserNotifications(User user) {
-
+    public List<Notification> getAllNotifications() {
+        return notifications;
     }
 }

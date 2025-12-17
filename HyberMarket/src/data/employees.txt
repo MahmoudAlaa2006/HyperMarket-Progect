@@ -1,0 +1,5 @@
+USR1001|Ahmed Admin|admin@mail.com|admin123|ADMIN
+USR1002|Mona Marketing|mona@mail.com|mark123|MARKETING
+USR1003|Omar Inventory|omar@mail.com|inv123|INVENTORY
+USR1004|Sara Seller|sara@mail.com|sell123|SELLER
+USR1005|Youssef Seller|youssef@mail.com|sell456|SELLER

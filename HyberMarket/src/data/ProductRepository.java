@@ -1,70 +1,70 @@
 package data;
 
 import models.Product;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRepository {
-    private static final String FILE_NAME = "products.txt";
+public class ProductRepository implements Repository<Product>{
 
-    // Load products from text file
+    private final String FILE_PATH = "Products.txt";
+
+
+    @Override
     public List<Product> load() {
         List<Product> products = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        File file = new File(FILE_PATH);
+
+        if (!file.exists()) {
+            return products;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 8) {
-                    Product p = new Product(
-                            parts[0],                          // id
-                            parts[1],                          // name
-                            Double.parseDouble(parts[2]),      // price
-                            Integer.parseInt(parts[3]),        // quantity
-                            LocalDate.parse(parts[4]),         // expiryDate
-                            Integer.parseInt(parts[5]),        // daysBeforeExpiryWarning
-                            Integer.parseInt(parts[6]),        // lowStockThreshold
-                            Boolean.parseBoolean(parts[7])     // isDamaged
-                    );
-                    products.add(p);
-                }
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split("\\|");
+
+                Product product = new Product(
+                        data[0],                          // id
+                        data[1],                          // name
+                        Double.parseDouble(data[2]),      // price
+                        Integer.parseInt(data[3]),        // quantity
+                        LocalDate.parse(data[4]),         // expiry date
+                        Integer.parseInt(data[5]),        // days warning
+                        Integer.parseInt(data[6]),        // low stock threshold
+                        Boolean.parseBoolean(data[7])     // damaged
+                );
+
+                products.add(product);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return products;
     }
 
-    // Save products to text file
+
+    @Override
     public void save(List<Product> products) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_PATH))) {
             for (Product p : products) {
-                writer.write(String.join(",",
-                        p.getId(),
-                        p.getName(),
-                        String.valueOf(p.getPrice()),
-                        String.valueOf(p.getQuantity()),
-                        p.getExpiryDate().toString(),
-                        String.valueOf(p.getDaysBeforeExpiryWarning()),
-                        String.valueOf(p.getLowStockThreshold()),
-                        String.valueOf(p.getIsdamaged())
-                ));
-                writer.newLine();
+                pw.println(
+                        p.getId() + "|" +
+                                p.getName() + "|" +
+                                p.getPrice() + "|" +
+                                p.getQuantity() + "|" +
+                                p.getExpiryDate() + "|" +
+                                p.getDaysBeforeExpiryWarning() + "|" +
+                                p.getLowStockThreshold() + "|" +
+                                p.isDamaged()
+                );
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // Get product by ID
-    public Product getProductById(String id) {
-        List<Product> products = load();
-        for (Product p : products) {
-            if (p.getId().equals(id)) {
-                return p;
-            }
-        }
-        return null; // not found
     }
 }
